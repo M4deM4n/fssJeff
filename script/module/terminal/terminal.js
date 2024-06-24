@@ -164,6 +164,12 @@ export class Terminal extends MovableResizableWindow {
         const command = cmdArgs.shift();
 
         switch(command) {
+            case 'echo':
+                this.writeToBuffer(cmdArgs.join(' '));
+                break;
+            case 'date':
+                this.writeToBuffer(getFormattedDate());
+                break;
             case 'help':
                 this.#help(cmdArgs);
                 break;
