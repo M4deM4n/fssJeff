@@ -1,4 +1,4 @@
-import EventBus from "/script/module/eventbus.js";
+import EventBus from "/script/module/event-bus.js";
 import {appState} from "/script/module/data/app-state.js";
 
 export class MovableResizableWindow {

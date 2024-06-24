@@ -2,7 +2,7 @@ import {secToMin} from "/script/module/utils.js";
 import { MovableResizableWindow } from "/script/module/window/window.js";
 import * as appData from "/script/module/data/app-data.js";
 import {appState} from "/script/module/data/app-state.js";
-import {AudioVisualization, ColorMode, VisualizationType} from "../audio-visualization/audio-visualization";
+import {AudioVisualization, ColorMode, VisualizationType} from "/script/module/audio-visualization/audio-visualization.js";
 
 
 

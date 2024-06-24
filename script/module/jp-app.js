@@ -1,6 +1,6 @@
 import { Terminal } from "/script/module/terminal/terminal.js";
 import { MediaPlayer} from "/script/module/media-player/media-player.js";
-import EventBus from "./eventbus";
+import EventBus from "/script/module/event-bus.js";
 import { openNewWindow } from "/script/module/utils.js";
 
 module.createWindow = openNewWindow;

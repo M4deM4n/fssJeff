@@ -1,9 +1,9 @@
-import { MovableResizableWindow } from "../window/window.js";
+import { MovableResizableWindow } from "/script/module/window/window.js";
 import { isNumeric, getFormattedDate } from "/script/module/utils.js";
 import {appState} from "/script/module/data/app-state.js";
 import {motd, defaultTabCompleteFilters, helpOutput} from "/script/module/data/app-data.js";
 import {fileSystem} from "/script/module/file-system/file-system.js";
-import EventBus from "/script/module/eventbus";
+import EventBus from "/script/module/event-bus";
 
 export class Terminal extends MovableResizableWindow {
 
