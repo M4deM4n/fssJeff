@@ -1,5 +1,5 @@
 import {byteCount, getFormattedDate} from "/script/module/utils.js";
-import {ColorMode, VisualizationType} from "../audio-visualization/audio-visualization";
+import {ColorMode, VisualizationType} from "/script/module/audio-visualization/audio-visualization.js";
 
 export const readme = ` 
                      __                 

@@ -3,7 +3,7 @@ import { isNumeric, getFormattedDate } from "/script/module/utils.js";
 import {appState} from "/script/module/data/app-state.js";
 import {motd, defaultTabCompleteFilters, helpOutput} from "/script/module/data/app-data.js";
 import {fileSystem} from "/script/module/file-system/file-system.js";
-import EventBus from "/script/module/event-bus";
+import EventBus from "/script/module/event-bus.js";
 
 export class Terminal extends MovableResizableWindow {
 
