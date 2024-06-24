@@ -1,12 +1,7 @@
 import {byteCount, getFormattedDate} from "/script/module/utils.js";
 import {ColorMode, VisualizationType} from "/script/module/audio-visualization/audio-visualization.js";
 
-export const readme = ` 
-                     __                 
-.----.-----.---.-.--|  |.--------.-----.
-|   _|  -__|  _  |  _  ||        |  -__|
-|__| |_____|___._|_____||__|__|__|_____|
- 
+export const readme = `  
 Welcome to my web application. This website was written using HTML, JavaScript(ES6), 
 and CSS. The goal was to write something interesting and dynamic without using any
 external libraries. Too often developers rely on abstractions to help them create 
