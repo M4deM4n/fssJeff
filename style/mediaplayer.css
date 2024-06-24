@@ -1,0 +1,136 @@
+#media-player {
+    top: 20px;
+    left: 55%;
+    position:absolute;
+}
+
+#media-player-content {
+    position:absolute;
+    box-sizing: border-box;
+    top:41px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+#media-player-ctrl-container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(196,196,196);
+    border-top:3px solid rgb(225,225,225);
+    border-left:3px solid rgb(225,225,225);
+    border-right:3px solid rgb(128,128,128);
+    border-bottom:3px solid rgb(128,128,128);
+    padding: 20px;
+}
+.medit-player-btn-play-wrap {
+    background:linear-gradient(to top left, rgb(255,255,255), rgb(47,47,47));
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    padding:10px;
+}
+.mp-btn-container {
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    width: 70px;
+    height: 70px;
+    border-radius:50%;
+    position: relative;
+}
+.mp-btn-container:active {
+    color: rgb(230,230,230);
+
+}
+
+.mp-btn-container .fa-solid {
+    display:grid;
+    place-items:center;
+    font-size:2rem;
+    position:absolute;
+}
+
+.btn {
+    text-shadow: 1px 1px 1px rgb(47,47,47);
+}
+.btn:active {
+    text-shadow: -1px -1px 1px rgb(47,47,47);
+}
+
+.mp-dsp-wrap {
+    margin-left:25px;
+    background:linear-gradient(to top left, rgb(255,255,255), rgb(47,47,47));
+    padding: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 400px;
+    height: 100px;
+}
+
+#media-player-display {
+    background-color:black;
+    font-family: monospace;
+    border-radius: 10px;
+    width: 400px;
+    height: 100px;
+}
+
+#media-player-display > p {
+    margin:0;
+    padding:0;
+}
+
+#display-table {
+    margin:5px;
+    width: 386px;
+    text-align:left;
+}
+
+#display-table > td {
+    min-width: 100px;
+    text-align: right;
+    align-content: end;
+}
+
+.btn-fw-seek-container, .btn-rv-seek-container {
+    padding:5px 10px;
+    font-size:1.5rem;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+
+
+.btn-fw-seek-container {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.media-player-btn-selected {
+    background-color:rgb(35,170,242);
+}
+
+#media-player-canvas {
+    width: 300px;
+    height: 48px;
+    /*background-color: white;*/
+}
+.canvas-container {
+    height: 48px;
+}
+.vis-btn {
+    background-color: black;
+    color:rgb(196,196,196);
+    border: 1px solid rgb(196,196,196);
+    width: 100%;
+    height: 100%;
+    cursor:pointer;
+    margin: 0px 0px 1px 0px;
+}
+.vis-btn:hover {
+    background-color: rgb(96,96,96);
+}

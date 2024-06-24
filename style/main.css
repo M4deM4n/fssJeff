@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'Smooch Sans';
+    src: url(../assets/font/smooch_sans/SmoochSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Ostrich Sans';
+    src: url(../assets/font/ostrich_sans/ostrich-regular.ttf);
+}
+
+@font-face {
+    font-family: 'Ostrich Sans Lite';
+    src: url(../assets/font/ostrich_sans/OstrichSans-Light.otf);
+}
+
+@font-face {
+    font-family: 'Ostrich Sans Bold';
+    src: url(../assets/font/ostrich_sans/OstrichSans-Medium.otf);
+}
+
+@font-face {
+    font-family: 'VT323';
+    src: url(../assets/font/vt323/VT323-Regular.ttf)
+}
+
+body {
+    margin:0;
+    padding:0;
+    background-color: rgb(0,0,0);
+    color: rgb(240,240,240);
+}
+
+
+
+#video-container {
+    display:flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+#bg-video {
+    position: fixed;
+    z-index: inherit;
+}
+
+#name-container {
+    margin-top:25vh;
+    display:flex;
+    justify-content: center;
+    min-width:100%;
+    position:relative;
+    z-index:3;
+}
+
+#name-container span {
+    margin-top: 25px;
+    font-size: 15em;
+    text-shadow: 2px 2px black;
+    position: relative;
+}
+
+#name-thin {
+    font-family: 'Smooch Sans', sans-serif;
+    font-family: 'Ostrich Sans Lite';
+    color: #7B807F;
+}
+
+#name-thick {
+    font-family: 'Ostrich Sans Bold';
+    color: #FFFFFF;
+}
+
+#control-container {
+    display:flex;
+    justify-content: center;
+    z-index:3;
+    position: relative;
+}
+
+#control-bar {
+    padding:20px 300px;
+    height: 56px;
+    background-color:rgba(0,0,0,0.6);
+}
+
+.app-btn {
+    padding: 20px;
+    color:white;
+    background-color:rgba(0,0,0,0.8);
+    border:none;
+    cursor:pointer;
+    /* border:1px solid white; */
+}
+
+.app-btn:hover {
+    background-color:rgb(64,64,64);
+    border-bottom:3px solid rgb(240,240,240);
+}
+
+.yt-btn:hover {
+    background-color:rgb(192,64,64);
+}
+
+.mm-btn:hover {
+    background-color:rgb(35,170,242);
+}
+
+.mt-btn:hover {
+    color: rgb(31, 223, 100);
+}
+
+#content {
+    height:1000px;
+    min-width:100%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    transition: 0.5s all ease-in-out;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+    visibility: visible;
+}
