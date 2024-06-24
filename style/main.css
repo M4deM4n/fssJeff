@@ -127,18 +127,22 @@ body {
 .tooltip .tooltiptext {
     visibility: hidden;
     opacity: 0;
-    width: 120px;
+    min-width: 120px;
     background-color: black;
-    color: #fff;
+    color: rgb(96,96,96);
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 20px 10px;
     position: absolute;
     z-index: 1;
     top: 150%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -70px;
     transition: 0.5s all ease-in-out;
+}
+
+.tooltip .tooltiptext strong {
+    color: rgb(196,196,196);
 }
 
 .tooltip .tooltiptext::after {
