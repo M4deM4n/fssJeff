@@ -5,9 +5,9 @@ export const readme = `
 Welcome to my web application. This website was written using HTML, JavaScript(ES6), 
 and CSS. The goal was to write something interesting and dynamic without using any
 external libraries. Too often developers rely on abstractions to help them create 
-interesting content at the expense of understanding the language they were built
-upon. My goal was to re-acquaint myself with JavaScript and its modern features, and
-to produce something interesting with it. I hope you like it. 
+interesting content at the expense of understanding the language those abstractions 
+were built with. My aim is to re-acquaint myself with JavaScript and its modern 
+features, and to produce something interesting with it. I hope you like it. 
   
 `
 
@@ -181,8 +181,10 @@ export const helpOutput = `
     <tr><td>cat &lt;file&gt;</td><td>Dump the contents of a file to the screen</td></tr>
     <tr><td>cd &lt;path&gt;</td><td>Change the directory to the specified path</td></tr>
     <tr><td>clear</td><td>Clear the screen buffer</td></tr>
+    <tr><td>date</td><td>Print current date and time</td></tr>
+    <tr><td>echo</td><td>Display a line of text</td></tr>
     <tr><td>exit</td><td>End terminal session</td></tr>
-    <tr><td>help &lt;command&gt;</td><td>Get help for the specified command</td></tr>
+<!--    <tr><td>help &lt;command&gt;</td><td>Get help for the specified command</td></tr>-->
     <tr><td>kill &lt;pid&gt;</td><td>Terminate the specified process</td></tr>
     <tr><td>ls [path]</td><td>List the contents of a specified path. Path is optional</td></tr>
     <tr><td>ps</td><td>List running processes</td></tr>
