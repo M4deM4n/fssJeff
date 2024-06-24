@@ -201,7 +201,7 @@ export class Terminal extends MovableResizableWindow {
                     this.#exec(command);
                     break;
                 }
-                this.writeToBuffer(cmdArgs[0] + ': command not found');
+                this.writeToBuffer(command + ': command not found');
         }
     }
 
