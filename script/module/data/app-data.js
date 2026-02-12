@@ -1,67 +1,67 @@
 import {byteCount, getFormattedDate} from "/script/module/utils.js";
 import {ColorMode, VisualizationType} from "/script/module/audio-visualization/audio-visualization.js";
 
-export const readme = `  
-Welcome to my web application. This website was written using HTML, JavaScript(ES6), 
+export const readme = `
+Welcome to my web application. This website was written using HTML, JavaScript(ES6),
 and CSS. The goal was to write something interesting and dynamic without using any
-external libraries. Too often developers rely on abstractions to help them create 
-interesting content at the expense of understanding the language those abstractions 
-were built with. My aim is to re-acquaint myself with JavaScript and its modern 
-features, and to produce something interesting with it. I hope you like it. 
-  
+external libraries. Too often developers rely on abstractions to help them create
+interesting content at the expense of understanding the language those abstractions
+were built with. My aim is to re-acquaint myself with JavaScript and its modern
+features, and to produce something interesting with it. I hope you like it.
+
 `
 
-export const aboutme = ` 
- |   |        |  |              \\ \\ 
+export const aboutme = `
+ |   |        |  |              \\ \\
  |   |   _ \\  |  |   _ \\       _)  |
  ___ |   __/  |  |  (   |          |
 _|  _| \\___| _| _| \\___/       _)  |
-                                 _/ 
- 
-My name is Jeff Pizano, I was born in 1982, and I've been a software engineer for 
-over 14 years. I'm a father of two, amateur musician, and game developer. 
- 
+                                 _/
+
+My name is Jeff Pizano, I was born in 1982, and I've been a software engineer for
+over 14 years. I'm a father of two, amateur musician, and game developer.
+
 `
 
-export const workhistory = ` 
+export const workhistory = `
 [JOB HISTORY]
 ---------------------------------------------------------------------------------
-Company: Employer's Outsourcing / Full Stack Studios
+Company: Employer's Outsourcing / PM-Software
 Timeframe: 2024 - present
-Titles: 
+Titles:
     Senior Full-Stack Developer (2024 - present)
- 
+
 ---------------------------------------------------------------------------------
 Company: Solutions By Design, Inc.
 Timeframe: 2017 - 2024
-Titles: 
+Titles:
     Director Of Development (2021 - 2024)
     Lead Software Engineer (2017 - 2021)
- 
+
 ---------------------------------------------------------------------------------
 Company: kodevo
 Timeframe: 2014 - 2017
 Titles:
     Lead Software Engineer (2014 - 2017)
- 
+
 ---------------------------------------------------------------------------------
 Company: signingTRAC
 Timeframe: 2013 - 2014
 Titles:
     Senior Programmer / Application Developer (2013 - 2014)
- 
+
 ---------------------------------------------------------------------------------
 Company: Solutions By Design, Inc.
 Timeframe: 2010 - 2014
 Titles:
     Senior Programmer (2010 - 2014)
- 
+
 ---------------------------------------------------------------------------------
 Company: Pro Travel Network
 Timeframe: 2007 -2010
 Titles:
     Junior Programmer (2007 - 2010)
- 
+
 `
 
 export const trackList = [
@@ -82,17 +82,17 @@ export const trackList = [
 export const motd = `
 &nbsp;
 &nbsp;
-     _____    ____    _____                ____  _____   ______           _____    
- ___|\\    \\  |    |  /    /|___       ____|\\   \\|\\    \\ |\\     \\     ____|\\    \\   
-|    |\\    \\ |    | /    /|    |     /    /\\    \\\\\\    \\| \\     \\   /     /\\    \\  
-|    | |    ||    ||\\____\\|    |    |    |  |    |\\|    \\  \\     | /     /  \\    \\ 
+     _____    ____    _____                ____  _____   ______           _____
+ ___|\\    \\  |    |  /    /|___       ____|\\   \\|\\    \\ |\\     \\     ____|\\    \\
+|    |\\    \\ |    | /    /|    |     /    /\\    \\\\\\    \\| \\     \\   /     /\\    \\
+|    | |    ||    ||\\____\\|    |    |    |  |    |\\|    \\  \\     | /     /  \\    \\
 |    |/____/||    || |   |/    |___ |    |__|    | |     \\  |    ||     |    |    |
 |    ||    |||    | \\|___/    /    ||    .--.    | |      \\ |    ||     |    |    |
 |    ||____|/|    |    /     /|    ||    |  |    | |    |\\ \\|    ||\\     \\  /    /|
 |____|       |____|   |_____|/____/||____|  |____| |____||\\_____/|| \\_____\\/____/ |
 |    |       |    |   |     |    | ||    |  |    | |    |/ \\|   || \\ |    ||    | /
-|____|       |____|   |_____|____|/ |____|  |____| |____|   |___|/  \\|____||____|/ 
- 
+|____|       |____|   |_____|____|/ |____|  |____| |____|   |___|/  \\|____||____|/
+
 &nbsp;
 &nbsp;
 System information as of ${getFormattedDate()}
@@ -162,11 +162,12 @@ export var defaultTabCompleteFilters = [
 ]
 
 export const visualizationList = [
-    VisualizationType.Oscilloscope | VisualizationType.Spectrum,
     VisualizationType.Oscilloscope,
+    VisualizationType.Oscilloscope | VisualizationType.Spectrum,
     VisualizationType.Spectrum,
     VisualizationType.Spectrum | VisualizationType.LowResolution,
-    VisualizationType.Oscilloscope | VisualizationType.Spectrum | VisualizationType.LowResolution
+    VisualizationType.Oscilloscope | VisualizationType.Spectrum | VisualizationType.LowResolution,
+    VisualizationType.Oscilloscope | VisualizationType.Spectrum | VisualizationType.LowResolution | VisualizationType.Custom
 ]
 
 export const colorModeList = [

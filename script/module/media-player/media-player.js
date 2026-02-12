@@ -2,7 +2,8 @@ import {secToMin} from "/script/module/utils.js";
 import { MovableResizableWindow } from "/script/module/window/window.js";
 import * as appData from "/script/module/data/app-data.js";
 import {appState} from "/script/module/data/app-state.js";
-import {AudioVisualization, ColorMode, VisualizationType} from "/script/module/audio-visualization/audio-visualization.js";
+import { AudioVisualization, ColorMode, VisualizationType } from "/script/module/audio-visualization/audio-visualization.js";
+import EventBus from "/script/module/event-bus.js";
 
 
 
@@ -151,6 +152,8 @@ export class MediaPlayer extends MovableResizableWindow
         if(!this.audio.paused) {
             this.togglePlayback();
         }
+
+        EventBus.emit('hide-glsl-visualizer', 1); // Hide the GLSL window
 
         appState.processes = appState.processes.filter((el) => el.pid !== this.pid);
         this.element.style.display = 'none';

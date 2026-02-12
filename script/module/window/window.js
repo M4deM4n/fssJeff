@@ -5,6 +5,7 @@ export class MovableResizableWindow {
     constructor(elementId, config = {}) {
 
         this.pid = 0;
+        this.isVisible = false;
 
         const externalTriggerId = (config.externalTriggerId ? config.externalTriggerId : null);
         this.minWidth = (config.minWidth ? config.minWidth : 0);
@@ -58,6 +59,8 @@ export class MovableResizableWindow {
     }
 
     #initClose() {
+        if (this.closeButton === null) { return; }
+
         this.onCloseClickHandler = this.onCloseClick.bind(this);
         this.closeButton.addEventListener('click', this.onCloseClickHandler);
     }
@@ -152,14 +155,30 @@ export class MovableResizableWindow {
         }
 
         appState.processes = appState.processes.filter((el) => el.pid !== this.pid);
-        // EventBus.emit('window-closed', { id: this.element.id });
+
         this.hide?.();
     }
 
     toggle() {
-        if(this.element.style.display === 'none') {
+        if (this.element.style.display === 'none') {
+            this.isVisible = true;
             this.element.style.display = 'block';
         } else {
+            this.isVisible = false;
+            this.element.style.display = 'none';
+        }
+    }
+
+    show() {
+        if(this.element.style.display === 'none') {
+            this.isVisible = true;
+            this.element.style.display = 'block';
+        }
+    }
+
+    hide() {
+        if (this.element.style.display === 'block') {
+            this.isVisible = false;
             this.element.style.display = 'none';
         }
     }

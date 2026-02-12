@@ -1,7 +1,12 @@
+import { GlslVisualization } from './glsl-visualization.js';
+import { GlslWindow } from './glsl-window.js';
+import EventBus from "/script/module/event-bus.js";
+
 export const VisualizationType = {
     Oscilloscope: 1,
     Spectrum: 2,
-    LowResolution: 4
+    LowResolution: 4,
+    Custom: 8,
 }
 
 export const ColorMode = {
@@ -23,6 +28,8 @@ export class AudioVisualization {
         this.freqs = new Uint8Array(this.analyser.frequencyBinCount);
         this.times = new Uint8Array(this.analyser.frequencyBinCount);
 
+        this.glslVisualization = new GlslVisualization();
+
         this.updateFFTSize();
     }
 
@@ -36,6 +43,13 @@ export class AudioVisualization {
 
     setType(type = VisualizationType.Oscilloscope) {
         this.type = type;
+
+        if (this.type & VisualizationType.Custom) {
+            EventBus.emit('show-glsl-visualizer', 1); // Show the GLSL window
+        } else {
+            EventBus.emit('hide-glsl-visualizer', 1); // Hide the GLSL window
+        }
+
         this.updateFFTSize();
     }
 
@@ -50,6 +64,10 @@ export class AudioVisualization {
 
     render() {
         this.clearBuffer();
+
+        if (this.type & VisualizationType.Custom) {
+            this.renderCustom();
+        }
 
         if(this.type & VisualizationType.Spectrum) {
             this.renderFrequencySpectrum();
@@ -137,4 +155,8 @@ export class AudioVisualization {
         this.clearBuffer();
     }
 
+    renderCustom() {
+        this.analyser.getByteFrequencyData(this.freqs);
+        this.glslVisualization.render(this.analyser.frequencyBinCount, this.freqs);
+    }
 }

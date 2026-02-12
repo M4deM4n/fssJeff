@@ -1,110 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Jeff Pizano ~ PM-Software</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
 
-    <head>
-        <title>Jeff Pizano ~ Full-Stack Studios</title>
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/window.css" />
+    <link rel="stylesheet" href="./style/terminal.css" />
+    <link rel="stylesheet" href="./style/mediaplayer.css" />
+    <link rel="stylesheet" href="./style/glsl-visualizer.css" />
+  </head>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="./style/main.css" />
-        <link rel="stylesheet" href="./style/window.css" />
-        <link rel="stylesheet" href="./style/terminal.css" />
-        <link rel="stylesheet" href="./style/mediaplayer.css" />
-    </head>
+  <body>
+    <!-- Fire video -->
+    <div id="video-container">
+      <video autoplay muted loop id="bg-video">
+        <source src="assets/video/fire.webm" type="video/mp4" />
+      </video>
+    </div>
 
-    <body>
-        <!-- Fire video -->
-        <div id="video-container">
-            <video autoplay muted loop id="bg-video">
-                <source src="assets/video/fire.webm" type="video/mp4">
-            </video>
+    <!-- JEFFPIZANO -->
+    <div id="name-container">
+      <span id="name-thin">JEFF</span>
+      <span id="name-thick">PIZANO</span>
+    </div>
+
+    <!-- Start/Application buttons -->
+    <div id="control-container">
+      <div id="control-bar">
+        <button id="btn-term" class="app-btn tooltip">
+          <i class="fa-solid fa-terminal fa-xl"></i
+          ><span class="tooltiptext"><strong>Terminal</strong></span>
+        </button>
+        <button id="btn-music" class="app-btn mm-btn tooltip">
+          <i class="fa-solid fa-headphones fa-xl"></i
+          ><span class="tooltiptext"
+            ><strong>Media Player</strong><br />Unreleased music</span
+          >
+        </button>
+        <!-- my music-->
+        <button
+          onclick="
+            module.createWindow(
+              'https://open.spotify.com/artist/0MpKPzFugW6qnCgP3kLxBM?si=DTjanWxXTjKQf-pUXAJJXQ',
+            )
+          "
+          id="btn-scale-gen"
+          class="app-btn mt-btn tooltip"
+        >
+          <i class="fa-brands fa-spotify fa-xl"></i
+          ><span class="tooltiptext"
+            ><strong>Spotify</strong><br />It could be worse!</span
+          >
+        </button>
+        <!-- music theory -->
+        <button
+          onclick="module.createWindow('https://www.youtube.com/@JeffPizano')"
+          class="app-btn yt-btn tooltip"
+        >
+          <i class="fa-brands fa-youtube fa-xl"></i
+          ><span class="tooltiptext"
+            ><strong>YouTube</strong><br />Game-dev videos</span
+          >
+        </button>
+        <!--  -->
+        <button
+          onclick="
+            module.createWindow(
+              'https://github.com/M4deM4n/fssJeff/tree/master',
+            )
+          "
+          class="app-btn tooltip"
+        >
+          <i class="fa-brands fa-github fa-xl"></i
+          ><span class="tooltiptext"
+            ><strong>Github</strong><br />View source code</span
+          >
+        </button>
+        <!--  -->
+      </div>
+    </div>
+
+    <!-- Termninal "app" -->
+    <div id="terminal" class="window hidden">
+      <div id="terminal-window-titlebar" class="title-bar">
+        <span id="terminal-title" class="titlebar-title">Terminal</span>
+        <button class="close-button">&times;</button>
+      </div>
+      <div id="terminal-buffer">
+        <div id="terminal-input-container">
+          <p>$&nbsp;</p>
+          <input id="terminal-input" type="text" />
         </div>
+      </div>
+      <div class="resizer"></div>
+    </div>
 
-        <!-- JEFFPIZANO -->
-        <div id="name-container">
-            <span id="name-thin">JEFF</span>
-            <span id="name-thick">PIZANO</span>
+    <!-- Media Player "app" -->
+    <div id="media-player" class="window hidden">
+      <!-- Window Title Bar -->
+      <div class="title-bar">
+        <span class="titlebar-title">Media Player</span>
+        <button class="close-button">&times;</button>
+      </div>
+
+      <div id="media-player-content">
+        <div id="media-player-ctrl-container">
+          <!-- Previous Button -->
+          <div id="media-player-btn-prev" class="btn-rv-seek-container">
+            <i class="fa-solid fa-backward-fast btn"></i>
+          </div>
+
+          <!-- Play/Pause Button -->
+          <div id="media-player-btn-play" class="mp-btn-container">
+            <i class="fa-solid fa-play fa-xl btn"></i>
+          </div>
+
+          <!-- Next Button -->
+          <div id="media-player-btn-next" class="btn-fw-seek-container">
+            <i class="fa-solid fa-forward-fast btn"></i>
+          </div>
+
+          <!-- Media Player Display --->
+          <div class="mp-dsp-wrap">
+            <div id="media-player-display">
+              <table id="display-table">
+                <tr>
+                  <td>Title:</td>
+                  <td>
+                    <span id="media-player-track-title"
+                      >03 - Odyssey - Set Forth</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Elapsed:</td>
+                  <td>
+                    <span id="media-player-dsp-time">0.00</span
+                    >&nbsp;/&nbsp;<span id="media-player-dsp-length">0.00</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button id="media-player-vis-btn" class="vis-btn">
+                      Vis
+                    </button>
+                    <button id="media-player-color-btn" class="vis-btn">
+                      Color
+                    </button>
+                  </td>
+                  <td class="canvas-container">
+                    <canvas id="media-player-canvas"></canvas>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Start/Application buttons -->
-        <div id="control-container">
-            <div id="control-bar">
-                <button id="btn-term" class="app-btn tooltip"><i class="fa-solid fa-terminal fa-xl"></i><span class="tooltiptext"><strong>Terminal</strong></span></button>
-                <button id="btn-music" class="app-btn mm-btn tooltip"><i class="fa-solid fa-headphones fa-xl"></i><span class="tooltiptext"><strong>Media Player</strong><br>Unreleased music</span></button> <!-- my music-->
-                <button onclick="module.createWindow('https://open.spotify.com/artist/0MpKPzFugW6qnCgP3kLxBM?si=DTjanWxXTjKQf-pUXAJJXQ')" id="btn-scale-gen" class="app-btn mt-btn tooltip"><i class="fa-brands fa-spotify fa-xl"></i><span class="tooltiptext"><strong>Spotify</strong><br>It could be worse!</span></button> <!-- music theory -->
-                <button onclick="module.createWindow('https://www.youtube.com/@JeffPizano')" class="app-btn yt-btn tooltip"><i class="fa-brands fa-youtube fa-xl"></i><span class="tooltiptext"><strong>YouTube</strong><br>Game-dev videos</span></button> <!--  -->
-                <button onclick="module.createWindow('https://github.com/M4deM4n/fssJeff/tree/master')" class="app-btn tooltip"><i class="fa-brands fa-github fa-xl"></i><span class="tooltiptext"><strong>Github</strong><br>View source code</span></button> <!--  -->
-            </div>
-        </div>
+    <!-- GLSL Audio Visualizer -->
+    <div id="gl-visualizer" class="window hidden">
+      <!-- Window Title Bar -->
+      <div class="title-bar">
+        <!-- <span class="titlebar-title">GLSL Audio Visualizer</span>
+        <button class="close-button">&times;</button> -->
+      </div>
+      <div id="gl-visualizer-buffer">
+        <canvas id="glCanvas"></canvas>
+      </div>
+      <div class="resizer"></div>
+    </div>
 
-        <!-- Termninal "app" -->
-        <div id="terminal" class="window hidden">
-            <div id="terminal-window-titlebar" class="title-bar">
-                <span id="terminal-title" class="titlebar-title">Terminal</span>
-                <button class="close-button">&times;</button>
-            </div>
-            <div id="terminal-buffer">
-                <div id="terminal-input-container">
-                    <p>$&nbsp;</p> <input id="terminal-input" type="text"/>
-                </div>
-            </div>
-            <div class="resizer"></div>
-        </div>
+    <script type="text/javascript">
+      const module = {};
+    </script>
 
-
-        <!-- Media Player "app" -->
-        <div id="media-player" class="window hidden">
-            <!-- Window Title Bar -->
-            <div class="title-bar">
-                <span class="titlebar-title">Media Player</span>
-                <button class="close-button">&times;</button>
-            </div>
-
-            <div id="media-player-content">
-                <div id="media-player-ctrl-container">
-                    <!-- Previous Button -->
-                    <div id="media-player-btn-prev" class="btn-rv-seek-container">
-                        <i class="fa-solid fa-backward-fast btn"></i>
-                    </div>
-
-                    <!-- Play/Pause Button -->
-                    <div id="media-player-btn-play" class="mp-btn-container">
-                        <i class="fa-solid fa-play fa-xl btn"></i>
-                    </div>
-
-                    <!-- Next Button -->
-                    <div id="media-player-btn-next" class="btn-fw-seek-container">
-                        <i class="fa-solid fa-forward-fast btn"></i>
-                    </div>
-
-                    <!-- Media Player Display --->
-                    <div class="mp-dsp-wrap">
-                        <div id="media-player-display">
-                            <table id="display-table">
-                                <tr><td>Title:</td><td><span id="media-player-track-title">03 - Odyssey - Set Forth</span></td></tr>
-                                <tr><td>Elapsed:</td><td><span id="media-player-dsp-time">0.00</span>&nbsp;/&nbsp;<span id="media-player-dsp-length">0.00</span></td></tr>
-                                <tr>
-                                    <td>
-                                        <button id="media-player-vis-btn" class="vis-btn">Vis</button>
-                                        <button id="media-player-color-btn" class="vis-btn">Color</button>
-                                    </td>
-                                    <td class="canvas-container"><canvas id="media-player-canvas"></canvas></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script type="text/javascript">
-            const module = {};
-        </script>
-
-        <!-- Attention seeking title bar -->
-        <script type="text/javascript" src="./script/document-title.js"></script>
-        <!-- modules -->
-        <script type="module" src="script/module/jp-app.js"></script>
-    </body>
-
+    <!-- Attention seeking title bar -->
+    <script type="text/javascript" src="./script/document-title.js"></script>
+    <!-- modules -->
+    <script type="module" src="script/module/jp-app.js"></script>
+  </body>
 </html>

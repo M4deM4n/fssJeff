@@ -1,0 +1,32 @@
+canvas {
+    display: block;
+}
+
+#gl-visualizer {
+    display: flex;
+    flex-direction: column;
+    height: 480px;
+    top: 20px;
+    left: 33%;
+    overflow: auto;
+    position: absolute;
+}
+
+#gl-visualizer-buffer {
+    padding: 5px;
+    text-align: left;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: monospace;
+    top: 42px;
+    left: 4px;
+    right: 0;
+    bottom: 0px;
+    position: absolute;
+}
+
+#glCanvas {
+    background-color: black;
+    display: block;
+}

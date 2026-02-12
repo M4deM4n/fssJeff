@@ -7,9 +7,15 @@ import EventBus from "/script/module/event-bus.js";
 
 export class Terminal extends MovableResizableWindow {
 
+    /**
+     * Initialize the terminal window
+     *
+     * @param {*} id
+     * @param {*} config
+     */
     constructor(id = 'terminal', config = {}) {
         super(id, config);
-        
+
         this.id = id;
         this.pid = 10;
 
@@ -19,6 +25,10 @@ export class Terminal extends MovableResizableWindow {
         this.#init();
     }
 
+
+    /**
+     * Initialize the terminal elements and event listeners
+     */
     #init() {
         // buffer referring to the div that will contain the output
         this.buffer = document.getElementById(this.id + '-buffer');
@@ -33,6 +43,10 @@ export class Terminal extends MovableResizableWindow {
         this.#addKeyboardListener();
     }
 
+
+    /**
+     * Add event listeners to the terminal elements
+     */
     #addEventListeners() {
         // focus input when buffer is clicked
         this.buffer.addEventListener('click', (e) => {
@@ -43,6 +57,10 @@ export class Terminal extends MovableResizableWindow {
         });
     }
 
+
+    /**
+     * Add keyboard listeners for terminal input
+     */
     #addKeyboardListener() {
         this.termInput.addEventListener('keydown', (e) => {
             let resetIndex = true;
@@ -89,6 +107,12 @@ export class Terminal extends MovableResizableWindow {
         })
     }
 
+
+    /**
+     * Handle tab completion for commands
+     *
+     * @param {*} cmdArray
+     */
     #handleTabCompletion(cmdArray) {
         var completeList = [...defaultTabCompleteFilters];
         let onlyExecutables = false;
@@ -156,6 +180,12 @@ export class Terminal extends MovableResizableWindow {
         }
     }
 
+
+    /**
+     * Execute a command entered in the terminal
+     *
+     * @param {*} cmdArgs
+     */
     #executeCommand(cmdArgs) {
 
         this.writeToBuffer('$ ' + cmdArgs);
@@ -211,6 +241,13 @@ export class Terminal extends MovableResizableWindow {
         }
     }
 
+
+    /**
+     * Display help information for commands
+     *
+     * @param {*} args
+     * @returns
+     */
     #help(args = []) {
         if(args.length > 1) { return this.writeToBuffer('help: Too many arguments')}
         if(args.length === 1) { return this.writeToBuffer(this.#helpFor(args[0]))}
@@ -268,6 +305,13 @@ export class Terminal extends MovableResizableWindow {
         this.writeToBuffer(output);
     }
 
+
+    /**
+     * Format the output for the 'ls -l' command
+     *
+     * @param {*} contents
+     * @returns
+     */
     #lsListOutput(contents) {
         const permissions = 'rwxr-x-r-';
 
@@ -308,6 +352,13 @@ export class Terminal extends MovableResizableWindow {
         return output;
     }
 
+
+    /**
+     * Format the output for the standard 'ls' command
+     *
+     * @param {*} contents
+     * @returns
+     */
     #lsStdOutput(contents) {
         let rows = Math.ceil(contents.length / 6);
         let output = '<table class="ls-table">'
@@ -336,6 +387,13 @@ export class Terminal extends MovableResizableWindow {
         return output;
     }
 
+
+    /**
+     * Terminate a process by its PID
+     *
+     * @param {*} args
+     * @returns
+     */
     #kill(args) {
         if(args[0] === undefined) {
             return this.writeToBuffer('kill: usage: kill &lt;pid&gt;');
@@ -377,6 +435,10 @@ export class Terminal extends MovableResizableWindow {
         return this.writeToBuffer('kill: usage: kill &lt;pid&gt;');
     }
 
+
+    /**
+     * Display the list of running processes
+     */
     #ps() {
         let output = '<table class="ps-table"><tr><td>PID</td><td>TTY</td><td>TIME</td><td>CMD</td></tr>';
         appState.processes.forEach((proc) => {
@@ -387,6 +449,12 @@ export class Terminal extends MovableResizableWindow {
         this.writeToBuffer(output);
     }
 
+
+    /**
+     * Exit the terminal process
+     *
+     * @param {*} kill
+     */
     #exit(kill = false) {
         appState.processes = appState.processes.filter((el) => el.pid !== this.pid);
         if(this.externalTrigger) {
@@ -405,6 +473,10 @@ export class Terminal extends MovableResizableWindow {
         }
     }
 
+
+    /**
+     * Show the terminal window
+     */
     show() {
         // add pid to running process list
         this.pid = appState.getPID();
@@ -418,6 +490,10 @@ export class Terminal extends MovableResizableWindow {
         this.resetBuffer();
     }
 
+
+    /**
+     * Hide the terminal window
+     */
     hide() {
         appState.processes = appState.processes.filter((el) => el.pid !== this.pid);
 
@@ -430,6 +506,12 @@ export class Terminal extends MovableResizableWindow {
         }
     }
 
+
+    /**
+     * Toggle the terminal window visibility
+     *
+     * @returns bool
+     */
     toggle() {
         if(this.element.style.display === 'none') {
             this.show();
@@ -440,6 +522,13 @@ export class Terminal extends MovableResizableWindow {
         return false;
     }
 
+
+    /**
+     * Slowly write content to the terminal buffer
+     *
+     * @param {*} content
+     * @param {*} speed
+     */
     slowWrite(content = '', speed = 0) {
         const lines = content.split("\n");
         let i = 0;
@@ -453,6 +542,12 @@ export class Terminal extends MovableResizableWindow {
         setTimeout(printLine,speed);
     }
 
+
+    /**
+     * Write a line to the terminal buffer
+     *
+     * @param {*} line
+     */
     writeToBuffer(line) {
         if(this.buffer.childElementCount !== 0) {
             this.buffer.removeChild(this.termInputContainer);
@@ -467,6 +562,12 @@ export class Terminal extends MovableResizableWindow {
         this.termInput.focus();
     }
 
+
+    /**
+     * Reset the terminal buffer
+     *
+     * @param {*} printMotd
+     */
     resetBuffer(printMotd = true) {
         if(this.buffer.childElementCount !== 0) {
             this.buffer.removeChild(this.termInputContainer);
