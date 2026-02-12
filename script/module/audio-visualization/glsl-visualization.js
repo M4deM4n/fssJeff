@@ -1,4 +1,4 @@
-import { CollidescopeShader } from "./glsl-shaders/collidescope";
+import { CollidescopeShader } from "./glsl-shaders/collidescope.js";
 
 export class GlslVisualization
 {
